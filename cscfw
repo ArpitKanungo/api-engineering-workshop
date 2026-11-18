@@ -1,0 +1,7 @@
+Bullet Create inventory.py with a NetworkDevice class and an InventoryManager class.
+Bullet The NetworkDevice class should have attributes: hostname, ip_address, device_type, status, and os_version (with an appropriate init method and a to_dict method).
+Bullet The InventoryManager class should manage a collection of NetworkDevice instances and support the following methods:
+	1.	add_device(device: NetworkDevice) -> None: Adds a device or updates it if the hostname already exists.
+	2.	remove_device(hostname: str) -> bool: Removes a device by its hostname.
+	3.	filter_by_status(status: str) -> list[NetworkDevice]: Returns a list of devices matching the given status.
+	4.	export_to_json(filepath: str) -> None: Exports all managed devices to a JSON file.
