@@ -5,3 +5,6 @@ Bullet The InventoryManager class should manage a collection of NetworkDevice in
 	2.	remove_device(hostname: str) -> bool: Removes a device by its hostname.
 	3.	filter_by_status(status: str) -> list[NetworkDevice]: Returns a list of devices matching the given status.
 	4.	export_to_json(filepath: str) -> None: Exports all managed devices to a JSON file.
+
+
+create a python file that creates 3 devices and read them
