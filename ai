@@ -1,0 +1,105 @@
+AI assisted Code generation and AI assisted
+Testing
+
+mkdir cisco_ai_testing &amp;&amp; cd cisco_ai_testing
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pytest
+Scenario 1 - Unit Testing (Port Range Validator)
+Prompt to create the source :-
+Create a file named network_utils.py with a
+function `is_valid_port(port: int) -&gt; bool` that
+validates whether a given integer is a valid
+TCP/UDP port number (between 1 and 65535
+inclusive, returning False for invalid types or out-
+of-range values).
+Prompt to create the test
+Create a file named test_network_utils.py using
+pytest to test #file:network_utils.py. Include a
+parameterized test suite covering standard ports
+(80, 443), boundary ports (1, 65535), out-of-range
+numbers (0, 65536, -1), and invalid types (e.g.,
+strings).
+
+Run command (Bash): pytest
+test_network_utils.py -v
+
+Scenario 2: Integration Testing (Config Parser
++ Audit Logger)
+ Phase 1: AI-Assisted Code Generation
+o Prompt to Copilot (Agent Mode):
+
+Create a file named device_audit.py containing:
+1. `parse_config_line(line: str) -&gt; dict`: splits a
+config line (e.g., &#39;hostname core-router-01&#39;) into a
+dictionary with &#39;key&#39; and &#39;value&#39;. Returns {} if
+malformed.
+2. `audit_config_change(line: str) -&gt; str`: calls
+`parse_config_line` and returns an audit log
+message (e.g., &quot;AUDIT: SET hostname TO core-
+router-01&quot;) or &quot;AUDIT: INVALID_CONFIG&quot; if
+parsing fails.
+Phase 2: AI-Assisted Integration Testing
+ Prompt to Copilot (Agent Mode):
+Create a file named test_integration.py using
+pytest to test the integration between
+parse_config_line and audit_config_change in
+
+#file:device_audit.py. Test both successful config
+parsing flows and malformed failure inputs.
+Run command (Bash): pytest test_integration.py -v
+Scenario 3: Regression Testing (Bandwidth
+Utilization Bug Fix)
+ Phase 1: AI-Assisted Code Generation
+o Prompt to Copilot (Agent Mode):
+
+Create a file named bandwidth.py with a function
+`calculate_utilization(current_mbps: float,
+max_mbps: float) -&gt; float` that calculates interface
+bandwidth utilization percentage rounded to 2
+decimal places.
+ Phase 2: AI-Assisted Regression Testing
+(Fixing a Bug &amp; Preventing Recurrence)
+o Prompt to Copilot (Agent Mode):
+
+Update #file:bandwidth.py so that
+`calculate_utilization` safely handles a max_mbps
+of 0 or negative numbers by returning 0.0 instead
+of causing a ZeroDivisionError.
+Then, create a file named test_regression.py using
+pytest to write a regression test verifying that
+passing 0.0 as max_mbps returns 0.0 safely
+without crashing.
+
+o Run command (Bash): pytest
+test_regression.py -v
+
+Scenario 4: User Acceptance Testing / UAT
+(Compliance Verification)
+ Phase 1: AI-Assisted Code Generation
+o Prompt to Copilot (Agent Mode):
+
+Create a file named compliance_checker.py with a
+function
+`evaluate_security_compliance(config_text: str) -&gt;
+str` that checks device configurations:
+- Returns &quot;REJECTED: Insecure Telnet enabled
+without SSH&quot; if &#39;transport input telnet&#39; is present
+and SSH is absent.
+- Returns &quot;ACCEPTED: Secure management
+verified&quot; if &#39;transport input ssh&#39; is present.
+- Returns &quot;PENDING: Manual review required&quot;
+otherwise.
+ Phase 2: AI-Assisted UAT Acceptance
+Testing
+o Prompt to Copilot (Agent Mode):
+
+Create a file named test_uat_acceptance.py using
+pytest to verify business UAT acceptance
+scenarios for #file:compliance_checker.py,
+
+ensuring secure SSH configs are accepted and
+insecure Telnet configs are rejected.
+
+o Run command (Bash): pytest
+test_uat_acceptance.py -v
